@@ -1,0 +1,8 @@
+.dot-field-container {
+  position: absolute;
+  inset: 0;
+  /* Prevent repaints from leaking outside this layer */
+  contain: layout style;
+  /* Create a new stacking context — isolates compositing */
+  isolation: isolate;
+}
