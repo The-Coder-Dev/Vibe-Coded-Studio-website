@@ -11,8 +11,8 @@ const fadeUp = (delay = 0) => ({
 
 const team = [
   {
-    initials: 'OJ',
-    name: 'Ojas',
+    initials: 'AS',
+    name: 'Ashwani Sharma',
     role: 'Founder & Creative Director',
     color: '#f27c38',
     description:
@@ -20,8 +20,8 @@ const team = [
     skills: ['Brand Strategy', 'Art Direction', 'Typography'],
   },
   {
-    initials: 'AR',
-    name: 'Aryan',
+    initials: 'DS',
+    name: 'Dev Sharma',
     role: 'Lead Web Developer',
     color: '#4A7FC1',
     description:
@@ -29,22 +29,22 @@ const team = [
     skills: ['Next.js', 'Framer', 'Design Systems'],
   },
   {
-    initials: 'PR',
-    name: 'Priya',
-    role: 'UI / UX Designer',
-    color: '#5A9E8A',
+    initials: 'DO',
+    name: 'Dolly',
+    role: 'Video Editior',
+    color: '#4A7FC1',
     description:
-      'Champions the user at every step. Crafts flows that feel intuitive and interfaces that delight.',
-    skills: ['Figma', 'Prototyping', 'Motion Design'],
+      'She is a very good at video editing and she can edit any type of video. She is very good at creativity.',
+    skills: ['Video Editing', 'Creativity', 'Editing'],
   },
   {
-    initials: 'KD',
-    name: 'Karan',
-    role: 'Brand Designer',
-    color: '#C07A4A',
+    initials: 'PR',
+    name: 'Pradyuman',
+    role: 'Content Writer',
+    color: '#f27c38',
     description:
-      'Creates visual identities that last. Knows when to be bold and when restraint is the statement.',
-    skills: ['Logo Design', 'Color Systems', 'Illustration'],
+      'He is the Best at copy writing and content writing. He is very good at communication and presentation skills.',
+    skills: ['Copy Writing', 'Content Writing', 'Presentation Skills'],
   },
 ]
 
@@ -78,7 +78,7 @@ const AboutTeam = () => {
         </div>
 
         {/* Team cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4  gap-4">
           {team.map(({ initials, name, role, color, description, skills }, i) => (
             <motion.div
               key={name}
@@ -87,7 +87,7 @@ const AboutTeam = () => {
             >
               {/* Avatar area */}
               <div
-                className="relative flex items-center justify-center py-12 overflow-hidden"
+                className="relative flex items-center justify-center py-12 overflow-hidden h-100"
                 style={{ backgroundColor: `${color}18` }}
               >
                 {/* Ambient glow */}

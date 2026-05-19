@@ -10,9 +10,12 @@ const SENTENCE =
 const WORDS = SENTENCE.split(' ')
 
 function buildRanges(words: string[]) {
+  const step = 1 / words.length
   return words.map((_, i) => ({
-    start: Math.min(i / words.length, 0.99),
-    end: Math.min(i / words.length + 0.18, 1),
+    start: i * step,
+    // end = next word's start, so each word finishes animating before the next begins
+    // For the last word, end at exactly 1 — but the scroll offset below gives it room
+    end: Math.min((i + 1) * step, 1),
   }))
 }
 
@@ -41,7 +44,7 @@ function AnimatedWord({
 /* ── Stat card ── */
 const stats = [
   { value: '100+', label: 'Projects delivered' },
-  { value: '4.9★', label: 'Average client rating' },
+  { value: '4.9', label: 'Average client rating' },
   { value: '14d', label: 'Avg. delivery time' },
   { value: '3yr', label: 'Industry experience' },
 ]
@@ -51,11 +54,11 @@ const AboutMission = () => {
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ['start end', 'end end'],
+    offset: ['start 0%', 'end 60%'],
   })
 
   return (
-    <section ref={containerRef} className="relative h-[280vh] bg-background">
+    <section ref={containerRef} className="relative h-[200vh] bg-background">
       {/* Sticky scroll-driven text */}
       <div className="sticky top-0 flex h-screen items-center justify-center overflow-hidden bg-foreground px-6 sm:px-10 lg:px-16">
         {/* Faint background */}

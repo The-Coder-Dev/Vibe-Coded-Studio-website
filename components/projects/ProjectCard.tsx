@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion'
 import Image from 'next/image'
-import Link from 'next/link'
+import { Link } from 'next-view-transitions'
 import { ArrowUpRight } from 'lucide-react'
 import type { Project } from '@/types/project'
 
@@ -19,7 +19,7 @@ const ProjectCard = ({ project, priority = false, index = 0 }: ProjectCardProps)
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.55, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
-      className="group relative overflow-hidden rounded-2xl bg-muted/30 aspect-square"
+      className="group relative overflow-hidden rounded-2xl bg-muted/30 aspect-4/3"
     >
       <Link href={`/projects/${project.slug}`} className="absolute inset-0">
         {/* Featured image */}
@@ -33,7 +33,7 @@ const ProjectCard = ({ project, priority = false, index = 0 }: ProjectCardProps)
         />
 
         {/* Gradient overlay — slides up on hover */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+        <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
         {/* Bottom content — slides up on hover */}
         <div className="absolute inset-x-0 bottom-0 flex items-end justify-between p-5 translate-y-3 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]">
