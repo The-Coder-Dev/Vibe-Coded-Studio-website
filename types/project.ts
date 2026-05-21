@@ -1,11 +1,23 @@
 /* ─────────────────────────────────────────────
    Project Types
-   Structured to mirror future Payload CMS schema
+   Supports both Sanity CMS and static data
 ───────────────────────────────────────────── */
 
 export type ProjectType = 'graphic-design' | 'website-case-study'
 
+/** Sanity image asset shape */
+export interface SanityImage {
+  _type: 'image'
+  asset: { _ref: string; _type: 'reference' }
+  alt?: string
+  hotspot?: { x: number; y: number; height: number; width: number }
+}
+
 export interface Project {
+  // Source flag — true = came from Sanity
+  _sanity?: boolean
+  _id?: string
+
   // Core
   title: string
   slug: string
@@ -17,9 +29,9 @@ export interface Project {
   year: string
   client: string
 
-  // Media
-  featuredImage: string
-  galleryImages: string[]
+  // Media — either a URL string (static) or a Sanity image object
+  featuredImage: string | SanityImage
+  galleryImages: (string | SanityImage)[]
 
   // Metadata
   services: string[]

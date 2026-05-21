@@ -3,15 +3,27 @@ import { getProjectBySlug, getNextProjects, getAllProjects } from '@/lib/project
 import ProjectHero from '@/components/projects/ProjectHero'
 import ProjectContentRenderer from '@/components/projects/ProjectContentRenderer'
 import RelatedProjects from '@/components/projects/RelatedProjects'
+import { urlFor } from '@/sanity/lib/image'
+import type { SanityImage } from '@/types/project'
+
+// Re-validate every 60 seconds so Sanity published content appears quickly
+export const revalidate = 60
 
 interface Props {
   params: Promise<{ slug: string }>
 }
 
-/* Generate all static slugs at build time */
+/* Generate all static slugs at build time (includes Sanity + static) */
 export async function generateStaticParams() {
   const projects = await getAllProjects()
   return projects.map((p) => ({ slug: p.slug }))
+}
+
+/* Resolve featuredImage to a URL string regardless of type */
+function resolveOgImage(img: string | SanityImage | null | undefined): string {
+  if (!img) return ''
+  if (typeof img === 'string') return img
+  try { return urlFor(img).width(1200).height(630).fit('crop').auto('format').url() } catch { return '' }
 }
 
 /* Dynamic metadata per project */
@@ -19,14 +31,14 @@ export async function generateMetadata({ params }: Props) {
   const { slug } = await params
   const project = await getProjectBySlug(slug)
   if (!project) return {}
+  const ogImage = resolveOgImage(project.featuredImage)
   return {
     title: `${project.title} — Ojas Studio`,
     description: project.shortDescription,
-    openGraph: {
-      images: [{ url: project.featuredImage }],
-    },
+    openGraph: ogImage ? { images: [{ url: ogImage }] } : {},
   }
 }
+
 
 const ProjectPage = async ({ params }: Props) => {
   const { slug } = await params

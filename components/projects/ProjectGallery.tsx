@@ -4,9 +4,20 @@ import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
 import { X, ChevronLeft, ChevronRight } from 'lucide-react'
+import type { SanityImage } from '@/types/project'
+import { urlFor } from '@/sanity/lib/image'
+
+function resolveGalleryImage(img: string | SanityImage): string {
+  if (typeof img === 'string') return img
+  try {
+    return urlFor(img).width(1200).height(900).fit('crop').auto('format').url()
+  } catch {
+    return ''
+  }
+}
 
 interface ProjectGalleryProps {
-  images: string[]
+  images: (string | SanityImage)[]
   title: string
 }
 
@@ -26,29 +37,33 @@ const ProjectGallery = ({ images, title }: ProjectGalleryProps) => {
 
         {/* Masonry 2-column grid */}
         <div className="columns-1 sm:columns-2 gap-4 space-y-4">
-          {images.map((src, i) => (
-            <motion.button
-              key={i}
-              onClick={() => openLightbox(i)}
-              className="group relative w-full overflow-hidden rounded-2xl block cursor-zoom-in"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.07, ease: [0.22, 1, 0.36, 1] }}
-            >
-              <div className="relative w-full" style={{ aspectRatio: i % 3 === 0 ? '16/10' : '4/3' }}>
-                <Image
-                  src={src}
-                  alt={`${title} gallery image ${i + 1}`}
-                  fill
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.03]"
-                />
-                {/* Hover overlay */}
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
-              </div>
-            </motion.button>
-          ))}
+        {images.map((img, i) => {
+            const src = resolveGalleryImage(img)
+            if (!src) return null
+            return (
+              <motion.button
+                key={i}
+                onClick={() => openLightbox(i)}
+                className="group relative w-full overflow-hidden rounded-2xl block cursor-zoom-in"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.07, ease: [0.22, 1, 0.36, 1] }}
+              >
+                <div className="relative w-full" style={{ aspectRatio: i % 3 === 0 ? '16/10' : '4/3' }}>
+                  <Image
+                    src={src}
+                    alt={`${title} gallery image ${i + 1}`}
+                    fill
+                    unoptimized={typeof img !== 'string'}
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.03]"
+                  />
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
+                </div>
+              </motion.button>
+            )
+          })}
         </div>
       </div>
 
@@ -95,10 +110,11 @@ const ProjectGallery = ({ images, title }: ProjectGalleryProps) => {
               onClick={(e) => e.stopPropagation()}
             >
               <Image
-                src={images[lightbox]}
+                src={resolveGalleryImage(images[lightbox])}
                 alt={`${title} — ${lightbox + 1}`}
                 fill
                 priority
+                unoptimized={typeof images[lightbox] !== 'string'}
                 sizes="100vw"
                 className="object-cover"
               />

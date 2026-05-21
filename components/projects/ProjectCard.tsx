@@ -4,7 +4,8 @@ import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { Link } from 'next-view-transitions'
 import { ArrowUpRight } from 'lucide-react'
-import type { Project } from '@/types/project'
+import type { Project, SanityImage } from '@/types/project'
+import { urlFor } from '@/sanity/lib/image'
 
 interface ProjectCardProps {
   project: Project
@@ -12,7 +13,20 @@ interface ProjectCardProps {
   index?: number
 }
 
+/** Resolve a featuredImage that may be a Sanity image object or a plain URL string */
+function resolveImage(img: string | SanityImage | null | undefined): string {
+  if (!img) return ''
+  if (typeof img === 'string') return img
+  try {
+    return urlFor(img).width(900).height(675).fit('crop').auto('format').url()
+  } catch {
+    return ''
+  }
+}
+
 const ProjectCard = ({ project, priority = false, index = 0 }: ProjectCardProps) => {
+  const imageSrc = resolveImage(project.featuredImage)
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 24 }}
@@ -23,14 +37,23 @@ const ProjectCard = ({ project, priority = false, index = 0 }: ProjectCardProps)
     >
       <Link href={`/projects/${project.slug}`} className="absolute inset-0">
         {/* Featured image */}
-        <Image
-          src={project.featuredImage}
-          alt={project.title}
-          fill
-          priority={priority}
-          sizes="(max-width: 768px) 100vw, 50vw"
-          className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.04]"
-        />
+        {imageSrc ? (
+          <Image
+            src={imageSrc}
+            alt={project.title}
+            fill
+            priority={priority}
+            unoptimized={project._sanity === true}
+            sizes="(max-width: 768px) 100vw, 50vw"
+            className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.04]"
+          />
+
+        ) : (
+          <div className="absolute inset-0 bg-muted flex items-center justify-center">
+            <span className="text-muted-foreground text-sm font-medium">{project.title}</span>
+          </div>
+        )}
+
 
         {/* Gradient overlay — slides up on hover */}
         <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />

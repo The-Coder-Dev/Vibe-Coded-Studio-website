@@ -4,7 +4,18 @@ import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowLeft, ExternalLink } from 'lucide-react'
-import type { Project } from '@/types/project'
+import type { Project, SanityImage } from '@/types/project'
+import { urlFor } from '@/sanity/lib/image'
+
+function resolveImage(img: string | SanityImage | null | undefined): string {
+  if (!img) return ''
+  if (typeof img === 'string') return img
+  try {
+    return urlFor(img).width(1600).height(700).fit('crop').auto('format').url()
+  } catch {
+    return ''
+  }
+}
 
 interface ProjectHeroProps {
   project: Project
@@ -83,22 +94,28 @@ const ProjectHero = ({ project }: ProjectHeroProps) => {
         </motion.div>
 
         {/* Hero image */}
-        <motion.div
-          className="relative w-full overflow-hidden rounded-2xl"
-          style={{ aspectRatio: '16/7' }}
-          initial={{ opacity: 0, y: 32 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.18, ease: [0.22, 1, 0.36, 1] }}
-        >
-          <Image
-            src={project.featuredImage}
-            alt={project.title}
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover"
-          />
-        </motion.div>
+        {(() => {
+          const heroSrc = resolveImage(project.featuredImage)
+          return heroSrc ? (
+            <motion.div
+              className="relative w-full overflow-hidden rounded-2xl"
+              style={{ aspectRatio: '16/7' }}
+              initial={{ opacity: 0, y: 32 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.18, ease: [0.22, 1, 0.36, 1] }}
+            >
+              <Image
+                src={heroSrc}
+                alt={project.title}
+                fill
+                priority
+                unoptimized={project._sanity === true}
+                sizes="100vw"
+                className="object-cover"
+              />
+            </motion.div>
+          ) : null
+        })()}
       </div>
     </section>
   )
