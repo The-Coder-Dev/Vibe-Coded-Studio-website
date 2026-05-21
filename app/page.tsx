@@ -4,6 +4,7 @@ import WhyUs from '@/components/sections/WhyUs'
 import Services from '@/components/sections/Services'
 import Testimonials from '@/components/sections/Testimonials'
 import SelectedWork from '@/components/sections/SelectedWork'
+import CTA from '@/components/CTA'
 import { getFeaturedProjects } from '@/lib/projects'
 
 const page = async () => {
@@ -13,10 +14,10 @@ const page = async () => {
     <main className='min-h-screen w-full '>
       <Hero />
       <WhyUs />
-      <SelectedWork projects={featuredProjects} />
-      {/* <About /> */}
       <Services />
+      <SelectedWork projects={featuredProjects} />
       <Testimonials />
+      <CTA />
     </main>
   )
 }

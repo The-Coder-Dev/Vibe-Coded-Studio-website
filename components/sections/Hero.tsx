@@ -2,8 +2,9 @@ import Image from 'next/image'
 import Link from 'next/link'
 import DotField from '../DotField'
 import { Badge } from '../ui/badge'
-import { WandSparkles } from 'lucide-react'
 import { Button } from '../ui/button'
+import CallBookButton from '../CallBookButton'
+
 
 
 const Hero = () => {
@@ -27,17 +28,21 @@ const Hero = () => {
 
             <div className='relative mx-auto w-full max-w-7xl px-6 pt-36 pb-16 sm:px-8 sm:pb-20 lg:px-10'>
                 <div className='flex flex-col items-center gap-16 '>
-                    <div className='mx-auto w-full max-w-7xl text-center mt-10 sm:mt-14 lg:mt-16'>
-                        <Badge className='mx-auto mb-10 inline-flex items-center gap-2 rounded-full border-destructive bg-destructive/60 px-4 py-3 text-background shadow-sm sm:mx-0' variant="outline">
-                            <WandSparkles color='white' size={18} />
-                            <span className='text-sm font-light'>Agencies & Modern Brands</span>
+                    <div className='mx-auto w-full max-w-7xl flex items-center justify-center flex-col text-center mt-10 sm:mt-14 lg:mt-16'>
+                        <Badge className='mx-auto mb-10 inline-flex items-center gap-2 rounded-full bg-foreground px-4 py-4 text-background shadow-sm sm:mx-0' variant="outline">
+                            <span className='text-[13px] font-light'>Design • Web • Motion</span>
                         </Badge>
-                        <h1 className='text-4xl font-bold uppercase text-foreground sm:text-5xl lg:text-6xl'>Your Agency&apos;s Backend Team</h1>
-                        <p className='mt-2 text-base leading-8  sm:text-lg sm:leading-9'>White-label websites, creative design, and digital support for fast-moving agencies.</p>
+                        <h1 className='text-4xl font-bold uppercase text-foreground sm:text-5xl lg:text-6xl'>
+                            Design, Web & Motion <br />
+                            — Done Right</h1>
+                        <p className='mt-2 max-w-2xl text-base leading-8  sm:text-lg sm:leading-9'>We create simple, sharp, and reliable design, web, and motion work for agencies and brands who want things done right the first time.</p>
 
-                        <Button asChild size={"lg"} className='mt-6 text-sm px-4 py-3 rounded-xl'>
-                            <Link href="/" className=''>Get Started</Link>
-                        </Button>
+                        <div className="mt-6 flex gap-5">
+                            <Button asChild size={"lg"} className='text-sm px-4 py-3 rounded-xl'>
+                                <Link href="/contact" className=''>Start a project</Link>
+                            </Button>
+                            <CallBookButton />
+                        </div>
                     </div>
 
                     <div className="bg-destructive/10 ring-1 ring-destructive/30 backdrop-blur-2xl p-0.3 rounded-4xl " >

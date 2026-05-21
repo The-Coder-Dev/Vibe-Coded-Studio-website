@@ -11,8 +11,8 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter", weight: ["40
 
 
 export const metadata: Metadata = {
-  title: "Studio",
-  description: "Studio is a platform for creating and sharing your work with the world.",
+  title: "Ojas Studio",
+  description: "Ojas Studio is a .",
 };
 
 export default function RootLayout({

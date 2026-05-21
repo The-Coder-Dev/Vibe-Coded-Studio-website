@@ -8,7 +8,7 @@ const menuItems = [
   { title: 'About',    href: '/about', id: 1 },
   { title: 'Projects', href: '/projects', id: 2 },
   { title: 'Features', href: '/', id: 3 },
-  { title: 'Contact',  href: '/', id: 4 },
+  { title: 'Contact',  href: '/contact', id: 4 },
 ]
 
 /* ── Hamburger / X icon ── */
@@ -71,10 +71,10 @@ const Navbar = () => {
           {/* Desktop CTA + mobile hamburger */}
           <div className="flex items-center gap-3">
             <Link
-              href="/"
+              href="/contact"
               className="hidden md:inline-flex bg-destructive text-secondary px-3.5 py-2 rounded-lg text-sm font-medium hover:opacity-90 transition-opacity"
             >
-              Get Started
+              Start a Project
             </Link>
 
             {/* Hamburger — mobile only */}
@@ -136,7 +136,7 @@ const Navbar = () => {
                     onClick={() => setOpen(false)}
                     className="block w-full text-center bg-destructive text-secondary px-4 py-2.5 rounded-lg text-sm font-medium hover:opacity-90 transition-opacity"
                   >
-                    Get Started
+                    Start a Project
                   </Link>
                 </motion.div>
               </div>

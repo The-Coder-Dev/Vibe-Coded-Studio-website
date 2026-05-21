@@ -11,7 +11,7 @@ const fadeUp = (delay = 0) => ({
   transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1], delay },
 })
 
-const AboutCTA = () => {
+const CTA = () => {
   return (
     <section className="w-full p-4 sm:p-5 pb-6">
       <motion.div
@@ -87,4 +87,4 @@ const AboutCTA = () => {
   )
 }
 
-export default AboutCTA
+export default CTA

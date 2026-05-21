@@ -3,7 +3,7 @@ import AboutHero from '@/components/about/AboutHero'
 import AboutMission from '@/components/about/AboutMission'
 import AboutValues from '@/components/about/AboutValues'
 import AboutTeam from '@/components/about/AboutTeam'
-import AboutCTA from '@/components/about/AboutCTA'
+import AboutCTA from '@/components/CTA'
 
 export const metadata: Metadata = {
   title: 'About — Ojas Studio',

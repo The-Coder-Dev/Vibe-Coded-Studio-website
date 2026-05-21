@@ -45,7 +45,7 @@ const Footer = () => {
                     <div className="px-6 sm:px-10 pt-10 pb-8 border-b border-background/10">
                         {/* Big wordmark */}
                         <h1 className="text-5xl sm:text-7xl lg:text-9xl font-bold text-background leading-none tracking-tight">
-                            OJAS STUDIO
+                            THE OJAS STUDIO
                         </h1>
 
                         {/* tagline + CTA row */}
