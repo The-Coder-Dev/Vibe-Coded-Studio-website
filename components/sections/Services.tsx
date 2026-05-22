@@ -41,28 +41,28 @@ const Tag = ({ label }: { label: string }) => (
 const services = [
   {
     id: "brand",
-    title: "Brand Identity",
+    title: "Graphic Design",
     description:
-      "Elevate your identity: sharp positioning, cohesive visuals, real impact.",
-    tags: ["ART DIRECTION", "BRAND STRATEGY", "LOGO DESIGN", "COLOR SYSTEMS"],
+      "We design visual content that communicates messages and ideas through typography, colors, and layout.",
+    tags: ["Logo Design", "Social Media Post", "Brochure Design", "Banner Design"],
     image: "/service-brand.png",
     imageAlt: "Brand identity book mockup",
   },
   {
     id: "web",
-    title: "Web & Mobile Design",
+    title: "Web Development",
     description:
-      "Refresh or rebrand your UI; lift retention with clear flows and micro-interactions.",
-    tags: ["CLEAN & MODERN UI", "REBRANDING", "PROTOTYPING", "DESIGN SYSTEM"],
+      "We design visually stunning, fast-loading websites that capture attention and drive results.",
+    tags: ["NextJS", "WordPress", "E-commerce", "UI/UX", "Modern UI", "Landing Pages"],
     image: "/service-mobile.png",
     imageAlt: "Web and mobile design mockup",
   },
   {
-    id: "nocode",
-    title: "No-Code Websites",
+    id: "video",
+    title: "Video Editing",
     description:
-      "Launch a revenue-driving site that captures qualified leads 24/7 — shipped in 14 days or less.",
-    tags: ["FRAMER DEV", "INTEGRATIONS", "CMS INTEGRATION", "ANIMATION"],
+      "We create engaging video content that tells stories and captivates audiences. ",
+    tags: ["Reels", "Shorts", "Motion Design"],
     image: "/service-nocode.png",
     imageAlt: "MacBook no-code website mockup",
   },
@@ -99,15 +99,15 @@ const Services = () => {
       </div>
 
       {/* ── 3-column grid ── */}
-      <div className="mx-auto max-w-7xl grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div className="mx-auto max-w-7xl grid grid-cols-1 md:grid-cols-3 gap-4 items-stretch">
         {services.map(({ id, title, description, tags, image, imageAlt }, i) => (
           <motion.div
             key={id}
-            className="flex flex-col rounded-2xl overflow-hidden border border-border bg-card"
+            className="flex flex-col h-full rounded-2xl overflow-hidden border border-border bg-card"
             {...fadeUp(0.06 * i + 0.1)}
           >
             {/* ── info card (top) ── */}
-            <div className="flex flex-col gap-5 p-6">
+            <div className="flex flex-col gap-5 p-6 flex-1">
               {/* folder icon */}
               <FolderIcon />
 

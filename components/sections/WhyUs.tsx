@@ -111,13 +111,17 @@ const WhyUs = () => {
           {/* top: avatars + rating */}
           <div className="flex flex-col gap-2">
             <div className="flex">
-              {[1, 2, 3].map((i) => (
+              {[
+              { initials: 'JK', color: '#4A7FC1' },
+              { initials: 'MC', color: '#C07A4A' },
+              { initials: 'JL', color: '#5A9E8A' },
+            ].map(({ initials, color }, i) => (
                 <div
-                  key={i}
-                  className="w-8 h-8 rounded-full bg-[oklch(0.72_0_0)] border-2 border-card flex items-center justify-center text-[11px] font-semibold text-white"
-                  style={{ zIndex: 4 - i, marginLeft: i === 1 ? 0 : -10 }}
+                  key={initials}
+                  className="w-8 h-8 rounded-full border-2 border-card flex items-center justify-center text-[11px] font-semibold text-white"
+                  style={{ zIndex: 4 - i, marginLeft: i === 0 ? 0 : -10, backgroundColor: color }}
                 >
-                  {i}
+                  {initials}
                 </div>
               ))}
             </div>

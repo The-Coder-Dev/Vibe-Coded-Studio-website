@@ -36,8 +36,8 @@ const contactInfo = [
   {
     icon: Mail,
     label: 'Email us',
-    value: 'hello@ojasstudio.com',
-    href: 'mailto:hello@ojasstudio.com',
+    value: 'hello@ojas.studio',
+    href: 'mailto:hello@ojas.studio',
   },
   {
     icon: Phone,

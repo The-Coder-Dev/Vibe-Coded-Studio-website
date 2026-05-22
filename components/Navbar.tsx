@@ -43,7 +43,7 @@ const Navbar = () => {
       className="w-full px-4 pt-4 fixed z-50"
     >
       <motion.nav
-        className="w-full mx-auto max-w-4xl border border-white/5 bg-foreground/80 backdrop-blur-lg rounded-2xl overflow-hidden"
+        className="w-full mx-auto max-w-4xl border border-white/10 bg-foreground/95 backdrop-blur-xl rounded-2xl overflow-hidden shadow-lg"
         /* height animates from auto (closed) to auto (open) via layout */
         layout
         transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}

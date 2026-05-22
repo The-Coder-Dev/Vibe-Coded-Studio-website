@@ -200,6 +200,8 @@
     overscroll-behavior: none;
     /* Disable native smooth scroll — Lenis owns all scroll interpolation */
     scroll-behavior: auto !important;
+    /* Prevent horizontal overflow on mobile */
+    overflow-x: hidden;
   }
   body {
     @apply bg-background text-foreground;
@@ -208,6 +210,8 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeSpeed;
+    /* Prevent horizontal overflow on mobile */
+    overflow-x: hidden;
   }
 }
 
