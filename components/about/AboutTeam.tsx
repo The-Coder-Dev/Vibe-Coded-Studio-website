@@ -19,7 +19,7 @@ const team = [
     image: '/ash.webp',
     description:
       'Leads brand strategy and visual direction. Obsessed with purposeful design that earns trust.',
-    skills: ['Brand Strategy', 'Art Direction', 'Typography'],
+    skills: ['Logo Design', 'Social Media Post', 'Ad Creatives'],
   },
   {
     initials: 'DS',
@@ -29,7 +29,7 @@ const team = [
     image: '/dev.webp',
     description:
       'Builds fast, accessible, pixel-perfect sites. Turns complex interactions into seamless UX.',
-    skills: ['Next.js', 'Framer', 'WordPress'],
+    skills: ['Next.js', 'WordPress'],
   },
   {
     initials: 'DO',
@@ -41,16 +41,16 @@ const team = [
       'She is a very good at video editing and she can edit any type of video. She is very good at creativity.',
     skills: ['Video Editing', 'Creativity', 'Editing'],
   },
-  {
-    initials: 'PR',
-    name: 'Pradyuman',
-    role: 'Content Writer',
-    color: '#f27c38',
-    image: null,
-    description:
-      'He is the Best at copy writing and content writing. He is very good at communication and presentation skills.',
-    skills: ['Copy Writing', 'Content Writing', 'Presentation Skills'],
-  },
+  // {
+  //   initials: 'PR',
+  //   name: 'Pradyuman',
+  //   role: 'Content Writer',
+  //   color: '#f27c38',
+  //   image: null,
+  //   description:
+  //     'He is the Best at copy writing and content writing. He is very good at communication and presentation skills.',
+  //   skills: ['Copy Writing', 'Content Writing', 'Presentation Skills'],
+  // },
 ]
 
 const AboutTeam = () => {
@@ -83,7 +83,7 @@ const AboutTeam = () => {
         </div>
 
         {/* Team cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {team.map(({ initials, name, role, color, image, description, skills }, i) => (
             <motion.div
               key={name}
@@ -93,7 +93,7 @@ const AboutTeam = () => {
               {/* Avatar area */}
               <div
                 className="relative flex items-center justify-center overflow-hidden"
-                style={{ backgroundColor: `${color}18`, height: '420px' }}
+                style={{ backgroundColor: `${color}18`, height: '620px' }}
               >
                 {/* Ambient glow */}
                 <div

@@ -52,7 +52,7 @@ const Navbar = () => {
         <div className="flex items-center justify-between px-4 py-3.5">
           {/* Logo */}
           <Link href="/" className="text-base font-semibold text-white">
-            Ojas Studio
+           The Ojas Studio
           </Link>
 
           {/* Desktop links */}

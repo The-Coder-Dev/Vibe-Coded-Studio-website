@@ -58,7 +58,7 @@ const AboutMission = () => {
   })
 
   return (
-    <section ref={containerRef} className="relative h-[200vh] bg-background">
+    <section ref={containerRef} className="relative h-[100vh] bg-background">
       {/* Sticky scroll-driven text */}
       <div className="sticky top-0 flex h-screen items-center justify-center overflow-hidden bg-foreground px-6 sm:px-10 lg:px-16">
         {/* Faint background */}

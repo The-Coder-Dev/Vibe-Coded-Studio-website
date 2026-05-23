@@ -40,7 +40,7 @@ const features = [
   {
     icon: <IconScale />,
     title: "Scalable Design",
-    desc: "We create systems that grow with your brand and stay effective over time.",
+    desc: "From single landing pages to ongoing creative support, our systems are built to grow with your brand.",
   },
   {
     icon: <IconClock />,
@@ -135,19 +135,8 @@ const WhyUs = () => {
           <div className="flex-1 flex flex-col gap-2">
             <div className="text-sm text-foreground">★★★★★</div>
             <blockquote className="text-sm text-foreground leading-relaxed">
-              &ldquo;Kanso understood our brand better than we did. Their ability to find the essential and express it simply is what sets them apart.&rdquo;
+              &ldquo;Ojas Studio helped us completely modernize our online presence. The process was smooth, communication was clear, and the final result exceeded expectations.&rdquo;
             </blockquote>
-          </div>
-
-          {/* author */}
-          <div className="flex items-center gap-2 pt-3 border-t border-border">
-            <div className="w-8 h-8 rounded-full bg-[oklch(0.72_0_0)] flex items-center justify-center text-[12px] font-semibold text-white flex-shrink-0">
-              S
-            </div>
-            <div>
-              <p className="text-[13px] font-semibold text-foreground">Sofia Ford</p>
-              <p className="text-[11px] text-muted-foreground">Founder</p>
-            </div>
           </div>
         </div>
 

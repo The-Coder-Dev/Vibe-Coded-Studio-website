@@ -1,6 +1,4 @@
 import Image from 'next/image'
-import React from 'react'
-import { Button } from '../ui/button'
 import Link from 'next/link'
 
 /* ─── data ─── */
@@ -66,16 +64,16 @@ const Footer = () => {
                                 Get in touch
                             </p>
                             <a
-                                href="mailto:hello@ojas.studio"
+                                href="mailto:hello.theojasstudio@gmail.com"
                                 className="text-lg sm:text-2xl font-semibold text-background hover:text-background/70 transition-colors"
                             >
-                                hello@ojas.studio
+                                hello.theojasstudio@gmail.com
                             </a>
                             <a
-                                href="tel:+918806524441"
+                                href="tel:+919368190018"
                                 className="text-base font-medium text-background/60 hover:text-background/90 transition-colors"
                             >
-                                (+91) 88065 24441
+                                (+91) 93681 90018
                             </a>
 
                             {/* Social icons */}
@@ -136,7 +134,7 @@ const Footer = () => {
                     {/* ── Bottom bar: copyright + made by ── */}
                     <div className="px-6 sm:px-10 py-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
                         <p className="text-[12px] text-background/35">
-                            © {new Date().getFullYear()} Ojas Studio. All rights reserved.
+                            © {new Date().getFullYear()} The Ojas Studio. All rights reserved.
                         </p>
                         <p className="text-[12px] text-background/35">
                             Made with ♥ by{' '}

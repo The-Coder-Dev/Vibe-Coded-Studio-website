@@ -58,7 +58,7 @@ const AboutHero = () => {
           className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-8 border-t border-background/10 pt-8"
         >
           <p className="text-base sm:text-lg text-background/55 max-w-md leading-relaxed">
-            Ojas Studio is a white-label creative partner for agencies and modern
+            The Ojas Studio is a white-label creative partner for agencies and modern
             brands — delivering brand identity, web design, and no-code builds
             with precision and speed.
           </p>
@@ -82,7 +82,7 @@ const AboutHero = () => {
         >
           {Array.from({ length: 10 }).map((_, i) => (
             <span key={i} className="flex-shrink-0">
-              Brand Identity &nbsp;·&nbsp; Web Design &nbsp;·&nbsp; No-Code &nbsp;·&nbsp; Ojas Studio &nbsp;·&nbsp; White-Label &nbsp;·&nbsp;
+              Graphic Design &nbsp;·&nbsp; Web Design &nbsp;·&nbsp; No-Code &nbsp;·&nbsp; The Ojas Studio &nbsp;·&nbsp; Video editing &nbsp;·&nbsp;
             </span>
           ))}
         </motion.div>

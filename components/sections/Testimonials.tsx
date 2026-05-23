@@ -13,36 +13,27 @@ const TESTIMONIALS = [
     quote:
       'Proactive, precise, and easy to work with—no hand-holding needed, just smooth collaboration from start to finish.',
     name: 'Jared Kim',
-    role: 'Marketing Director',
-    initials: 'JK',
-    color: '#4A7FC1',
+
   },
   {
     rating: 5.0,
     quote:
       'Felt like an embedded team with zero friction; communication was clear, and revisions landed perfectly on the first go.',
     name: 'Maya Collins',
-    role: 'Head of Product',
-    initials: 'MC',
-    color: '#C07A4A',
+
   },
   {
     rating: 4.9,
     quote:
       'The quality was unmatched. We submitted our request on Monday and had polished designs by Wednesday.',
     name: 'Jesse Leigh',
-    role: 'CEO & Founder',
-    initials: 'JL',
-    color: '#5A9E8A',
+
   },
   {
     rating: 4.9,
     quote:
       "We've tried other design subscriptions—none compare. Professional, reliable, and seriously creative.",
     name: 'Benjamin Daul',
-    role: 'Head of Engineering',
-    initials: 'BD',
-    color: '#3A5A7C',
   },
 ]
 
@@ -103,19 +94,6 @@ const Testimonials = () => {
 
             {/* Bottom: avatars, stars, trust copy */}
             <div>
-              {/* Stacked avatars */}
-              <div className="flex -space-x-3 mb-5">
-                {AVATAR_COLORS.map((color, i) => (
-                  <div
-                    key={i}
-                    className="h-9 w-9 rounded-full ring-2 ring-foreground flex items-center justify-center text-[10px] font-bold text-white select-none"
-                    style={{ backgroundColor: color }}
-                  >
-                    {AVATAR_INITIALS[i]}
-                  </div>
-                ))}
-              </div>
-
               {/* Stars */}
               <div className="flex gap-0.5 mb-3">
                 {Array.from({ length: 5 }).map((_, i) => (
@@ -158,15 +136,8 @@ const Testimonials = () => {
 
                 {/* Author */}
                 <div className="flex items-center gap-3">
-                  <div
-                    className="h-9 w-9 rounded-full flex items-center justify-center text-[11px] font-bold text-white flex-shrink-0 select-none"
-                    style={{ backgroundColor: t.color }}
-                  >
-                    {t.initials}
-                  </div>
                   <div>
                     <p className="text-sm font-semibold text-foreground leading-none mb-1">{t.name}</p>
-                    <p className="text-[11px] text-muted-foreground uppercase tracking-wider font-medium">{t.role}</p>
                   </div>
                 </div>
               </motion.div>

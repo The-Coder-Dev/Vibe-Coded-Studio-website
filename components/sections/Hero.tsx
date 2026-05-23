@@ -94,11 +94,13 @@ const Hero = () => {
                                 playsInline
                                 preload="metadata"
                                 className="object-cover rounded-3xl"
+                                poster="/hero-image.webp"
                             >
                                 <source
                                     src="https://ik.imagekit.io/o6wrut0fr/Studio%20video.mp4"
                                     type="video/mp4"
                                 />
+                                
                             </video>
                         </div>
 
