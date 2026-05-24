@@ -17,7 +17,7 @@ const MenuIcon = ({ open }: { open: boolean }) => (
     <motion.span
       className="block h-[1.5px] w-full bg-white rounded-full origin-center"
       animate={open ? { rotate: 45, y: 7.5 } : { rotate: 0, y: 0 }}
-      transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] as const }}
     />
     <motion.span
       className="block h-[1.5px] w-full bg-white rounded-full"
@@ -27,7 +27,7 @@ const MenuIcon = ({ open }: { open: boolean }) => (
     <motion.span
       className="block h-[1.5px] w-full bg-white rounded-full origin-center"
       animate={open ? { rotate: -45, y: -7.5 } : { rotate: 0, y: 0 }}
-      transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] as const }}
     />
   </div>
 )
@@ -95,7 +95,7 @@ const Navbar = () => {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+              transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] as const }}
               className="overflow-hidden md:hidden"
             >
               <div className="px-4 pb-5 pt-1 flex flex-col gap-1 border-t border-white/8">
@@ -108,7 +108,7 @@ const Navbar = () => {
                     transition={{
                       duration: 0.3,
                       delay: open ? i * 0.06 : 0,
-                      ease: [0.22, 1, 0.36, 1],
+                      ease: [0.22, 1, 0.36, 1] as const,
                     }}
                   >
                     <Link
