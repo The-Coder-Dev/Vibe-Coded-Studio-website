@@ -68,7 +68,7 @@ const ProjectCard = ({ project, priority = false, index = 0 }: ProjectCardProps)
           </div>
 
           {/* Arrow button */}
-          <div className="flex-shrink-0 h-10 w-10 rounded-xl bg-white flex items-center justify-center shadow-lg">
+          <div className="shrink-0 h-10 w-10 rounded-xl bg-white flex items-center justify-center shadow-lg">
             <ArrowUpRight size={17} className="text-black" />
           </div>
         </div>
