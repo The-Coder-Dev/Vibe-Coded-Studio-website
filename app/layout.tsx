@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/next"
 
 import ConditionalLayout from "@/components/ConditionalLayout";
 
@@ -17,13 +18,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-      <html lang="en" suppressHydrationWarning className={`${inter.className} antialiased`}>
-        <body>
-          <ConditionalLayout>
-            {children}
-          </ConditionalLayout>
-        </body>
-      </html>
+    <html lang="en" suppressHydrationWarning className={`${inter.className} antialiased`}>
+      <body>
+        <ConditionalLayout>
+          {children}
+        </ConditionalLayout>
+        <Analytics />
+      </body>
+    </html>
   );
 }
 
