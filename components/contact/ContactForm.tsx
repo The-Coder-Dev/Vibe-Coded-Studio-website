@@ -50,11 +50,12 @@ const contactInfo = [
 ]
 
 const services = [
-  { value: 'branding', label: 'Brand & Graphic Design' },
+  { value: 'graphic-design', label: 'Graphic Design' },
   { value: 'web', label: 'Web Development' },
+  { value: 'wordpress', label: 'WordPress Development' },
   { value: 'video', label: 'Video Editing' },
-  { value: 'content', label: 'Content Writing' },
-  { value: 'other', label: 'Something else' },
+  { value: 'posts', label: 'Social Media Posts' },
+  { value: 'ads', label: 'Ad Creatives' },
 ]
 
 
