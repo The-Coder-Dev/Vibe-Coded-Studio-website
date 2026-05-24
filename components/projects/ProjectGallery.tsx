@@ -35,8 +35,8 @@ const ProjectGallery = ({ images, title }: ProjectGalleryProps) => {
     <section className="w-full py-16">
       <div className="mx-auto max-w-[1500px] px-6 sm:px-8 lg:px-10">
 
-        {/* Masonry 2-column grid */}
-        <div className="columns-1 sm:columns-2 gap-4 space-y-4">
+        {/* Uniform grid — all images same height */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         {images.map((img, i) => {
             const src = resolveGalleryImage(img)
             if (!src) return null
@@ -45,22 +45,21 @@ const ProjectGallery = ({ images, title }: ProjectGalleryProps) => {
                 key={i}
                 onClick={() => openLightbox(i)}
                 className="group relative w-full overflow-hidden rounded-2xl block cursor-zoom-in"
+                style={{ aspectRatio: '16/10' }}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.07, ease: [0.22, 1, 0.36, 1] }}
               >
-                <div className="relative w-full" style={{ aspectRatio: i % 3 === 0 ? '16/10' : '4/3' }}>
-                  <Image
-                    src={src}
-                    alt={`${title} gallery image ${i + 1}`}
-                    fill
-                    unoptimized={typeof img !== 'string'}
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                    className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.03]"
-                  />
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
-                </div>
+                <Image
+                  src={src}
+                  alt={`${title} gallery image ${i + 1}`}
+                  fill
+                  unoptimized={typeof img !== 'string'}
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.03]"
+                />
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
               </motion.button>
             )
           })}

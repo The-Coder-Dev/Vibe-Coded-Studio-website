@@ -1,13 +1,13 @@
 'use client'
 
-import { Link } from 'next-view-transitions'
+import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useState } from 'react'
+import Image from 'next/image'
 
 const menuItems = [
   { title: 'About',    href: '/about', id: 1 },
   { title: 'Projects', href: '/projects', id: 2 },
-  { title: 'Features', href: '/', id: 3 },
   { title: 'Contact',  href: '/contact', id: 4 },
 ]
 
@@ -36,23 +36,21 @@ const Navbar = () => {
   const [open, setOpen] = useState(false)
 
   return (
-    <motion.header
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-      className="w-full px-4 pt-4 fixed z-50"
-    >
+    <header className="w-full px-4 pt-4 fixed z-50">
       <motion.nav
-        className="w-full mx-auto max-w-4xl border border-white/10 bg-foreground/95 backdrop-blur-xl rounded-2xl overflow-hidden shadow-lg"
-        /* height animates from auto (closed) to auto (open) via layout */
-        layout
-        transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+        className="w-full mx-auto max-w-4xl border border-white/10 bg-foreground/75 backdrop-blur-xl rounded-2xl overflow-hidden shadow-lg"
       >
         {/* ── top bar — always visible ── */}
         <div className="flex items-center justify-between px-4 py-3.5">
           {/* Logo */}
-          <Link href="/" className="text-base font-semibold text-white">
-           The Ojas Studio
+          <Link href="/" className="text-base font-semibold mt-1 text-white">
+           <Image 
+             src={"/logo.png"}
+             alt="Logo"
+             width={55}
+             height={50}
+             priority
+           />
           </Link>
 
           {/* Desktop links */}
@@ -144,7 +142,7 @@ const Navbar = () => {
           )}
         </AnimatePresence>
       </motion.nav>
-    </motion.header>
+    </header>
   )
 }
 

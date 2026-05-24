@@ -24,6 +24,8 @@ export interface Project {
   category: string
   shortDescription: string
   fullDescription: string
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  descriptionBlocks?: any[]
   featured: boolean
   projectType: ProjectType
   year: string

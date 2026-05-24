@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion'
 import Image from 'next/image'
-import { Link } from 'next-view-transitions'
+import Link from 'next/link'
 import { ArrowUpRight } from 'lucide-react'
 import type { Project, SanityImage } from '@/types/project'
 import { urlFor } from '@/sanity/lib/image'

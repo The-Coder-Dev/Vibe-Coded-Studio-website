@@ -1,5 +1,7 @@
-import { getAllProjects, getAllCategories } from '@/lib/projects'
+import { getAllProjects } from '@/lib/projects'
 import ProjectsClient from './ProjectsClient'
+
+export const revalidate = 60
 
 export const metadata = {
   title: 'Projects — Ojas Studio',
@@ -7,17 +9,14 @@ export const metadata = {
 }
 
 const ProjectsPage = async () => {
-  const [projects, categories] = await Promise.all([
-    getAllProjects(),
-    getAllCategories(),
-  ])
+  const projects = await getAllProjects()
 
   return (
     <main className="min-h-screen w-full pt-32 pb-24">
       <div className="mx-auto max-w-[1500px] px-6 sm:px-8 lg:px-10">
 
         {/* Header */}
-        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-12">
+        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-16">
           <div>
             <span className="text-sm text-muted-foreground mb-3 block">// PROJECTS //</span>
             <h1 className="text-4xl sm:text-5xl lg:text-[3.5rem] font-bold leading-none tracking-tight text-foreground">
@@ -29,8 +28,7 @@ const ProjectsPage = async () => {
           </p>
         </div>
 
-        {/* Client island: filter + search + grid */}
-        <ProjectsClient projects={projects} categories={categories} />
+        <ProjectsClient projects={projects} />
 
       </div>
     </main>

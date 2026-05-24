@@ -28,7 +28,7 @@ const SelectedWork = ({ projects }: SelectedWorkProps) => {
             viewport={{ once: true }}
             transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
           >
-            Selected Work.
+            Featured Work
           </motion.h2>
 
           <div className="flex flex-col items-start sm:items-end gap-3">

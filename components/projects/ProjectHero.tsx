@@ -80,17 +80,43 @@ const ProjectHero = ({ project }: ProjectHeroProps) => {
           className="flex flex-wrap gap-0 mb-8 border-y border-border divide-x divide-border"
           {...fadeUp(0.12)}
         >
-          {[
-            { label: '// CATEGORY', value: project.category },
-            { label: '// TOOLS', value: project.services.slice(0, 2).join(', ') },
-            { label: '// YEAR', value: project.year },
-            { label: '// CLIENT', value: project.client },
-          ].map(({ label, value }) => (
-            <div key={label} className="flex flex-col gap-0.5 px-6 py-4 first:pl-0 last:pr-0">
-              <span className="text-[10px] font-medium uppercase tracking-widest text-muted-foreground">{label}</span>
-              <span className="text-sm font-semibold text-foreground">{value}</span>
+          {/* Category — from Sanity categories field */}
+          <div className="flex flex-col gap-1.5 px-6 py-4 first:pl-0">
+            <span className="text-[10px] font-medium uppercase tracking-widest text-muted-foreground">// CATEGORY</span>
+            <div className="flex flex-wrap gap-1.5">
+              {(project.services?.length > 0 ? project.services : [project.category]).map((cat) => (
+                <span
+                  key={cat}
+                  className="inline-flex items-center rounded-full border border-border bg-card px-3 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-foreground"
+                >
+                  {cat}
+                </span>
+              ))}
             </div>
-          ))}
+          </div>
+
+          {/* Tools — technologies only */}
+          {project.technologies?.length > 0 && (
+            <div className="flex flex-col gap-1.5 px-6 py-4">
+              <span className="text-[10px] font-medium uppercase tracking-widest text-muted-foreground">// TOOLS</span>
+              <div className="flex flex-wrap gap-1.5">
+                {project.technologies.map((t) => (
+                  <span
+                    key={t}
+                    className="inline-flex items-center rounded-full border border-border bg-card px-3 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-foreground"
+                  >
+                    {t}
+                  </span>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Year */}
+          <div className="flex flex-col gap-0.5 px-6 py-4 last:pr-0">
+            <span className="text-[10px] font-medium uppercase tracking-widest text-muted-foreground">// YEAR</span>
+            <span className="text-sm font-semibold text-foreground">{project.year}</span>
+          </div>
         </motion.div>
 
         {/* Hero image */}

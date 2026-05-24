@@ -1,15 +1,7 @@
-"use client";
+
 
 import Image from "next/image";
-import { motion } from "framer-motion";
 
-/* ─── animation helpers ─── */
-const fadeUp = (delay = 0) => ({
-  initial: { opacity: 0, y: 28 },
-  whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true },
-  transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1], delay },
-});
 
 /* ─── inline folder icon (matches reference) ─── */
 const FolderIcon = () => (
@@ -76,35 +68,35 @@ const Services = () => {
       <div className="mx-auto mb-12 max-w-7xl flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6">
         <div className="flex flex-col gap-3">
           {/* pill label */}
-          <motion.div {...fadeUp(0)}>
+          <div >
             <span className="text-foreground text-sm">
               // SERVICES //
             </span>
-          </motion.div>
-          <motion.h2
+          </div>
+          <h2
             className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-foreground leading-none"
-            {...fadeUp(0.08)}
+            
           >
             What We Do.
-          </motion.h2>
+          </h2>
         </div>
 
-        <motion.p
+        <p
           className="max-w-xs text-sm text-muted-foreground leading-relaxed sm:text-right"
-          {...fadeUp(0.14)}
+          
         >
           We combine strategy, speed, and skill to deliver exceptional design —
           every time.
-        </motion.p>
+        </p>
       </div>
 
       {/* ── 3-column grid ── */}
       <div className="mx-auto max-w-7xl grid grid-cols-1 md:grid-cols-3 gap-4 items-stretch">
         {services.map(({ id, title, description, tags, image, imageAlt }, i) => (
-          <motion.div
+          <div
             key={id}
             className="flex flex-col h-full rounded-2xl overflow-hidden border border-border bg-card"
-            {...fadeUp(0.06 * i + 0.1)}
+            
           >
             {/* ── info card (top) ── */}
             <div className="flex flex-col gap-5 p-6 flex-1">
@@ -152,7 +144,7 @@ const Services = () => {
                 ))}
               </div>
             </div>
-          </motion.div>
+          </div>
         ))}
       </div>
     </section>

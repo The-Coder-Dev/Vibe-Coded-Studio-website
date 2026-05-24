@@ -1,15 +1,7 @@
-"use client";
-
-import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
-/* ─── animation helper ─── */
-const fadeUp = (delay = 0) => ({
-  initial: { opacity: 0, y: 24 },
-  whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true },
-  transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1], delay },
-});
+
 
 /* ─── inline SVG icons ─── */
 const IconBolt = () => (
@@ -63,24 +55,24 @@ const WhyUs = () => {
 
       {/* ── Section header ── */}
       <div className="mx-auto mb-10 max-w-7xl flex flex-col gap-3">
-        <motion.p
+        <p
           className="text-xs uppercase tracking-widest text-muted-foreground"
-          {...fadeUp(0)}
+        // {...fadeUp(0)}
         >
           / Why us
-        </motion.p>
-        <motion.h2
+        </p>
+        <h2
           className="text-3xl sm:text-4xl lg:text-5xl font-semibold leading-tight tracking-tight text-foreground max-w-6xl"
-          {...fadeUp(0.08)}
+          // {...fadeUp(0.08)}
         >
           We help agencies and businesses create modern {" "}<span className="text-muted-foreground">digital experiences that actually stand out.</span>
-        </motion.h2>
+        </h2>
       </div>
 
       {/* ── 4-column bento grid ── */}
-      <motion.div
+      <div
         className="mx-auto max-w-7xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3  items-stretch"
-        {...fadeUp(0.14)}
+        // {...fadeUp(0.14)}
       >
 
         {/* ── COL 1 — Hero card ── */}
@@ -91,8 +83,9 @@ const WhyUs = () => {
               Purposeful Design<br />for Modern Brands.
             </h3>
             <span className="absolute bottom-4 left-5 text-xs text-white/60">© 2025</span>
-            <Button className="absolute bottom-3 right-3 bg-card text-foreground text-xs font-medium px-3 py-1.5 rounded-full flex items-center gap-1 hover:bg-secondary transition-colors">
-              Get started <span>+</span>
+            <Button asChild className="absolute bottom-3 right-3 bg-card text-foreground text-xs font-medium px-3 py-1.5 rounded-full flex items-center gap-1 hover:bg-secondary transition-colors">
+              <Link href={'/contact'}>Get started <span>+</span>
+              </Link>
             </Button>
           </div>
           {/* bullet list */}
@@ -186,7 +179,7 @@ const WhyUs = () => {
           </div>
         </div>
 
-      </motion.div>
+      </div>
     </section>
   );
 };
