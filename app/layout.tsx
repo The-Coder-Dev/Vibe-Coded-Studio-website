@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/next"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 import ConditionalLayout from "@/components/ConditionalLayout";
 
@@ -24,6 +25,7 @@ export default function RootLayout({
           {children}
         </ConditionalLayout>
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
