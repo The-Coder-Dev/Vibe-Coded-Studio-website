@@ -14,7 +14,7 @@ const CallBookButton = () => {
     }, [])
 
     return (
-        <Button data-cal-namespace="book-a-call" data-cal-link="dev-s/book-a-call" data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}' asChild variant={'secondary'} size={"lg"} className='text-sm px-4 py-3 rounded-xl border border-destructive/20'>
+        <Button data-cal-namespace="book-a-call" data-cal-link="theojasstudio/book-a-call" data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}' asChild variant={'secondary'} size={"lg"} className='text-sm px-4 py-3 rounded-xl border border-destructive/20'>
             <Link href="/" className=''>Book a call</Link>
         </Button>
     )
