@@ -16,10 +16,6 @@ const contactSchema = z.object({
     ['branding', 'web', 'video', 'content', 'other'],
     { error: 'Please select a service' }
   ),
-  budget: z.enum(
-    ['under-5k', '5k-15k', '15k-50k', '50k-plus'],
-    { error: 'Please select a budget range' }
-  ),
   message: z.string().min(20, 'Message must be at least 20 characters'),
 })
 
@@ -61,12 +57,7 @@ const services = [
   { value: 'other', label: 'Something else' },
 ]
 
-const budgets = [
-  { value: 'under-5k', label: 'Under ₹5,000' },
-  { value: '5k-15k', label: '₹5,000 – ₹15,000' },
-  { value: '15k-50k', label: '₹15,000 – ₹50,000' },
-  { value: '50k-plus', label: '₹50,000+' },
-]
+
 
 /* ── Component ───────────────────────────────────────────────── */
 const ContactForm = () => {
@@ -82,11 +73,17 @@ const ContactForm = () => {
   })
 
   const onSubmit = async (data: ContactFormValues) => {
-    // Simulate async submission — replace with your actual API call
-    await new Promise((res) => setTimeout(res, 1200))
-    console.log('Contact form data:', data)
-    setSubmitted(true)
-    reset()
+    const res = await fetch('/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    })
+    if (res.ok) {
+      setSubmitted(true)
+      reset()
+    } else {
+      alert('Something went wrong. Please try again or email us directly.')
+    }
   }
 
   return (
@@ -227,30 +224,17 @@ const ContactForm = () => {
                     />
                   </Field>
 
-                  {/* Row 3: Service + Budget */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                    <Field label="Service needed *" error={errors.service?.message}>
-                      <select {...register('service')} className={inputCls(!!errors.service)}>
-                        <option value="">Select a service…</option>
-                        {services.map((s) => (
-                          <option key={s.value} value={s.value}>
-                            {s.label}
-                          </option>
-                        ))}
-                      </select>
-                    </Field>
-
-                    <Field label="Budget range *" error={errors.budget?.message}>
-                      <select {...register('budget')} className={inputCls(!!errors.budget)}>
-                        <option value="">Select a budget…</option>
-                        {budgets.map((b) => (
-                          <option key={b.value} value={b.value}>
-                            {b.label}
-                          </option>
-                        ))}
-                      </select>
-                    </Field>
-                  </div>
+                  {/* Row 3: Service */}
+                  <Field label="Service needed *" error={errors.service?.message}>
+                    <select {...register('service')} className={inputCls(!!errors.service)}>
+                      <option value="">Select a service…</option>
+                      {services.map((s) => (
+                        <option key={s.value} value={s.value}>
+                          {s.label}
+                        </option>
+                      ))}
+                    </select>
+                  </Field>
 
                   {/* Row 4: Message */}
                   <Field label="Tell us about your project *" error={errors.message?.message}>
