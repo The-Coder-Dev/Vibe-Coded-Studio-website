@@ -13,11 +13,12 @@ export async function POST(req: NextRequest) {
     }
 
     const serviceLabels: Record<string, string> = {
-      branding: 'Brand & Graphic Design',
+      'graphic-design': 'Graphic Design',
       web: 'Web Development',
+      wordpress: 'WordPress Development',
       video: 'Video Editing',
-      content: 'Content Writing',
-      other: 'Something else',
+      posts: 'Social Media Posts',
+      ads: 'Ad Creatives',
     }
 
     const { error } = await resend.emails.send({

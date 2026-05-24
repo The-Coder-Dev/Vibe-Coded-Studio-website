@@ -13,7 +13,7 @@ const contactSchema = z.object({
   email: z.string().email('Please enter a valid email address'),
   company: z.string().optional(),
   service: z.enum(
-    ['branding', 'web', 'video', 'content', 'other'],
+    ['graphic-design', 'web', 'wordpress', 'video', 'posts', 'ads'],
     { error: 'Please select a service' }
   ),
   message: z.string().min(20, 'Message must be at least 20 characters'),

@@ -1,5 +1,4 @@
 import Hero from '@/components/sections/Hero'
-import About from '@/components/sections/About'
 import WhyUs from '@/components/sections/WhyUs'
 import Services from '@/components/sections/Services'
 import Testimonials from '@/components/sections/Testimonials'
