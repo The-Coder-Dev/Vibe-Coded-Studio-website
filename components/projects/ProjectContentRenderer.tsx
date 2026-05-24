@@ -9,12 +9,12 @@ interface ProjectContentRendererProps {
   project: Project
 }
 
-const fadeUp = (delay = 0) => ({
-  initial: { opacity: 0, y: 20 },
-  whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true },
-  transition: { duration: 0.55, delay, ease: [0.22, 1, 0.36, 1] },
-})
+// const fadeUp = (delay = 0) => ({
+//   initial: { opacity: 0, y: 20 },
+//   whileInView: { opacity: 1, y: 0 },
+//   viewport: { once: true },
+//   transition: { duration: 0.55, delay, ease: [0.22, 1, 0.36, 1] },
+// })
 
 /* ── Rich Text components for Portable Text ── */
 const portableTextComponents = {
@@ -94,12 +94,12 @@ const WebsiteCaseStudy = ({ project }: { project: Project }) => (
       <section className="py-16 border-b border-border">
         <div className="mx-auto max-w-[1500px] px-6 sm:px-8 lg:px-10">
           <div className="grid grid-cols-1 md:grid-cols-[220px_1fr] gap-12">
-            <motion.div {...fadeUp(0)} className="pt-1">
+            <div className="pt-1">
               <span className="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground">
                 // About This Project
               </span>
-            </motion.div>
-            <motion.div {...fadeUp(0.06)}>
+            </div>
+            <div>
               {project.descriptionBlocks?.length ? (
                 <PortableText
                   value={project.descriptionBlocks}
@@ -108,7 +108,7 @@ const WebsiteCaseStudy = ({ project }: { project: Project }) => (
               ) : (
                 <p className="text-lg text-foreground/80 leading-relaxed">{project.fullDescription}</p>
               )}
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>
@@ -120,20 +120,20 @@ const WebsiteCaseStudy = ({ project }: { project: Project }) => (
         <div className="mx-auto max-w-[1500px] px-6 sm:px-8 lg:px-10">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             {project.challenge && (
-              <motion.div className="flex flex-col gap-3" {...fadeUp(0)}>
+              <div className="flex flex-col gap-3">
                 <span className="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground">
                   // Project Goals
                 </span>
                 <p className="text-base text-foreground/80 leading-relaxed">{project.challenge}</p>
-              </motion.div>
+              </div>
             )}
             {project.solution && (
-              <motion.div className="flex flex-col gap-3" {...fadeUp(0.08)}>
+              <div className="flex flex-col gap-3">
                 <span className="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground">
                   // The Result
                 </span>
                 <p className="text-base text-foreground/80 leading-relaxed">{project.solution}</p>
-              </motion.div>
+              </div>
             )}
           </div>
         </div>
@@ -148,17 +148,17 @@ const WebsiteCaseStudy = ({ project }: { project: Project }) => (
       <section className="py-16 border-t border-border">
         <div className="mx-auto max-w-[1500px] px-6 sm:px-8 lg:px-10">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <motion.div {...fadeUp(0)}>
+            <div>
               <span className="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground">
                 // Final Outcome
               </span>
               <h2 className="text-2xl sm:text-3xl font-bold text-foreground mt-3 mb-4 tracking-tight">
                 Results that move the needle.
               </h2>
-            </motion.div>
-            <motion.p className="text-base text-foreground/75 leading-relaxed" {...fadeUp(0.08)}>
+            </div>
+            <p className="text-base text-foreground/75 leading-relaxed">
               {project.outcome}
-            </motion.p>
+            </p>
           </div>
         </div>
       </section>
@@ -175,18 +175,18 @@ const GraphicDesign = ({ project }: { project: Project }) => (
       <section className="py-16 border-b border-border">
         <div className="mx-auto max-w-[1500px] px-6 sm:px-8 lg:px-10">
           <div className="grid grid-cols-1 md:grid-cols-[220px_1fr] gap-12">
-            <motion.div {...fadeUp(0)} className="pt-1">
+            <div>
               <span className="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground">
                 // About This Project
               </span>
-            </motion.div>
-            <motion.div {...fadeUp(0.06)}>
+            </div>
+            <div>
               {project.descriptionBlocks?.length ? (
                 <PortableText value={project.descriptionBlocks} components={portableTextComponents} />
               ) : (
                 <p className="text-lg text-foreground/80 leading-relaxed">{project.fullDescription}</p>
               )}
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>
@@ -198,16 +198,16 @@ const GraphicDesign = ({ project }: { project: Project }) => (
         <div className="mx-auto max-w-[1500px] px-6 sm:px-8 lg:px-10">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             {project.creativeDirection && (
-              <motion.div className="flex flex-col gap-3" {...fadeUp(0)}>
+              <div className="flex flex-col gap-3">
                 <span className="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground">// Creative Direction</span>
                 <p className="text-base text-foreground/80 leading-relaxed">{project.creativeDirection}</p>
-              </motion.div>
+              </div>
             )}
             {project.designRationale && (
-              <motion.div className="flex flex-col gap-3" {...fadeUp(0.08)}>
+              <div className="flex flex-col gap-3">
                 <span className="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground">// Design Rationale</span>
                 <p className="text-base text-foreground/80 leading-relaxed">{project.designRationale}</p>
-              </motion.div>
+              </div>
             )}
           </div>
         </div>
@@ -218,7 +218,7 @@ const GraphicDesign = ({ project }: { project: Project }) => (
     {project.colorPalette && project.colorPalette.length > 0 && (
       <section className="py-12 border-b border-border">
         <div className="mx-auto max-w-[1500px] px-6 sm:px-8 lg:px-10">
-          <motion.div {...fadeUp(0)}>
+          <div>
             <span className="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground">// Color Palette</span>
             <div className="flex gap-3 mt-4 flex-wrap">
               {project.colorPalette.map((color) => (
@@ -228,7 +228,7 @@ const GraphicDesign = ({ project }: { project: Project }) => (
                 </div>
               ))}
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
     )}

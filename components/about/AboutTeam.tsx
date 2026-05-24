@@ -124,7 +124,7 @@ const AboutTeam = () => {
 
                 {/* Subtle bottom gradient so text is readable on hover */}
                 {image && (
-                  <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black/30 to-transparent pointer-events-none" />
+                  <div className="absolute inset-x-0 bottom-0 h-16 bg-linear-to-t from-black/30 to-transparent pointer-events-none" />
                 )}
               </div>
 
@@ -151,7 +151,7 @@ const AboutTeam = () => {
                       className="inline-flex items-center gap-1 rounded-full border border-border bg-background px-2.5 py-1 text-[10px] font-medium text-foreground/70 tracking-wide"
                     >
                       <span
-                        className="w-1 h-1 rounded-full flex-shrink-0"
+                        className="w-1 h-1 rounded-full shrink-0"
                         style={{ backgroundColor: color }}
                       />
                       {skill}

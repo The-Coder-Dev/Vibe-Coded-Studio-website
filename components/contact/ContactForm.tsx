@@ -129,7 +129,7 @@ const ContactForm = () => {
                   href={href}
                   className="group flex items-start gap-4"
                 >
-                  <div className="mt-0.5 flex-shrink-0 w-9 h-9 rounded-xl bg-destructive/10 flex items-center justify-center transition-colors group-hover:bg-destructive/20">
+                  <div className="mt-0.5 shrink-0 w-9 h-9 rounded-xl bg-destructive/10 flex items-center justify-center transition-colors group-hover:bg-destructive/20">
                     <Icon size={16} className="text-destructive" />
                   </div>
                   <div>

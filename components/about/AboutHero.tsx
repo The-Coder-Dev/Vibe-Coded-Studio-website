@@ -81,7 +81,7 @@ const AboutHero = () => {
           transition={{ duration: 30, ease: 'linear', repeat: Infinity }}
         >
           {Array.from({ length: 10 }).map((_, i) => (
-            <span key={i} className="flex-shrink-0">
+            <span key={i} className="shrink-0">
               Graphic Design &nbsp;·&nbsp; Web Design &nbsp;·&nbsp; No-Code &nbsp;·&nbsp; The Ojas Studio &nbsp;·&nbsp; Video editing &nbsp;·&nbsp;
             </span>
           ))}
