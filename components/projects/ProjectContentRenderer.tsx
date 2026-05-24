@@ -141,7 +141,7 @@ const WebsiteCaseStudy = ({ project }: { project: Project }) => (
     )}
 
     {/* Gallery — uniform height grid */}
-    <ProjectGallery images={project.galleryImages} title={project.title} />
+    <ProjectGallery images={project.galleryImages} title={project.title} aspectRatio="16/9" />
 
     {/* Outcome */}
     {project.outcome && (
@@ -234,7 +234,7 @@ const GraphicDesign = ({ project }: { project: Project }) => (
     )}
 
     {/* Gallery */}
-    <ProjectGallery images={project.galleryImages} title={project.title} />
+    <ProjectGallery images={project.galleryImages} title={project.title} aspectRatio="4/5" />
   </div>
 )
 

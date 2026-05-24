@@ -7,10 +7,22 @@ import { X, ChevronLeft, ChevronRight } from 'lucide-react'
 import type { SanityImage } from '@/types/project'
 import { urlFor } from '@/sanity/lib/image'
 
-function resolveGalleryImage(img: string | SanityImage): string {
+function resolveGalleryImage(img: string | SanityImage, ratio: '16/9' | '4/5'): string {
   if (typeof img === 'string') return img
   try {
-    return urlFor(img).width(1200).height(900).fit('crop').auto('format').url()
+    // Request dimensions that match the display ratio
+    const [w, h] = ratio === '16/9' ? [1600, 900] : [800, 1000]
+    return urlFor(img).width(w).height(h).fit('crop').auto('format').url()
+  } catch {
+    return ''
+  }
+}
+
+/** Full-resolution URL — no crop / forced dimensions — for lightbox display */
+function resolveLightboxImage(img: string | SanityImage): string {
+  if (typeof img === 'string') return img
+  try {
+    return urlFor(img).width(2400).auto('format').url()
   } catch {
     return ''
   }
@@ -19,9 +31,11 @@ function resolveGalleryImage(img: string | SanityImage): string {
 interface ProjectGalleryProps {
   images: (string | SanityImage)[]
   title: string
+  /** '16/9' for website screenshots, '4/5' for social media / graphic posts */
+  aspectRatio?: '16/9' | '4/5'
 }
 
-const ProjectGallery = ({ images, title }: ProjectGalleryProps) => {
+const ProjectGallery = ({ images, title, aspectRatio = '16/9' }: ProjectGalleryProps) => {
   const [lightbox, setLightbox] = useState<number | null>(null)
 
   const openLightbox = (i: number) => setLightbox(i)
@@ -35,17 +49,17 @@ const ProjectGallery = ({ images, title }: ProjectGalleryProps) => {
     <section className="w-full py-16">
       <div className="mx-auto max-w-[1500px] px-6 sm:px-8 lg:px-10">
 
-        {/* Uniform grid — all images same height */}
+        {/* Uniform grid — aspect ratio driven by image type */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         {images.map((img, i) => {
-            const src = resolveGalleryImage(img)
+            const src = resolveGalleryImage(img, aspectRatio)
             if (!src) return null
             return (
               <motion.button
                 key={i}
                 onClick={() => openLightbox(i)}
                 className="group relative w-full overflow-hidden rounded-2xl block cursor-zoom-in"
-                style={{ aspectRatio: '16/10' }}
+                style={{ aspectRatio }}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -97,25 +111,29 @@ const ProjectGallery = ({ images, title }: ProjectGalleryProps) => {
               <ChevronLeft size={20} className="text-white" />
             </button>
 
-            {/* Image */}
+            {/* Image — display at original aspect ratio, capped to viewport */}
             <motion.div
               key={lightbox}
-              className="relative w-full max-w-5xl mx-16 rounded-xl overflow-hidden"
-              style={{ aspectRatio: '16/9' }}
+              className="flex items-center justify-center mx-16"
+              style={{ maxWidth: '90vw', maxHeight: '85vh' }}
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
               transition={{ duration: 0.3 }}
               onClick={(e) => e.stopPropagation()}
             >
-              <Image
-                src={resolveGalleryImage(images[lightbox])}
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={resolveLightboxImage(images[lightbox])}
                 alt={`${title} — ${lightbox + 1}`}
-                fill
-                priority
-                unoptimized={typeof images[lightbox] !== 'string'}
-                sizes="100vw"
-                className="object-cover"
+                style={{
+                  maxWidth: '90vw',
+                  maxHeight: '85vh',
+                  width: 'auto',
+                  height: 'auto',
+                  borderRadius: '0.75rem',
+                  display: 'block',
+                }}
               />
             </motion.div>
 

@@ -47,12 +47,12 @@ export const projectType = defineType({
       options: {
         list: [
           { title: 'Web Design', value: 'web-design' },
-          { title: 'Branding', value: 'branding' },
+          { title: 'Graphic Design', value: 'graphic-design' },
           { title: 'Motion', value: 'motion' },
           { title: 'Development', value: 'development' },
           { title: 'UI/UX', value: 'ui-ux' },
-          { title: '3D', value: '3d' },
-          { title: 'Illustration', value: 'illustration' },
+          { title: 'Social Media Posts', value: 'social-media-posts' },
+          { title: 'Ad Creatives', value: 'ad-creatives' },
         ],
       },
     }),
